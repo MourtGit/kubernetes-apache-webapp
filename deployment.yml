@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mourt-deployment
+  labels:
+    app: apache
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: apache #comment
+  template:
+    metadata: #Comment
+      labels:
+        app: apache
+    spec:
+      containers:
+      - name: apache
+        image: mourtdocker/apacheondocker:v1
+        ports:
+        - containerPort: 80
